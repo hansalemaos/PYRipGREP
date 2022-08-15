@@ -164,3 +164,96 @@ You'll find the files xaa.txt / xab.txt here: https://github.com/hansalemaos/PYR
 
 
 ```
+
+
+Output: 
+```python 
+ 'df': array([list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '15243', '15242', 'Mehr']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '22162', '22161', 'mehr']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '26981', '26980', 'mehr']),
+        ...,
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52397917', '52397916', 'mehr']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52403287', '52403286', 'mehr']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52404523', '52404522', 'mehr'])],
+       dtype=object),
+ 'df2': array([list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '4966', '4965', 'sein']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '5021', '5020', 'sein']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '7164', '7163', 'Sein']),
+        ...,
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52415836', '52415835', 'sein']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52420887', '52420886', 'sein']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52422346', '52422345', 'Sein'])],
+       dtype=object),
+ 'df3': array([list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '1051', '1050', 'buch']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '28055', '28054', 'buch']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '31815', '31814', 'Buch']),
+        ...,
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52302767', '52302766', 'buch']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52322927', '52322926', 'Buch']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52323198', '52323197', 'Buch'])],
+       dtype=object),
+ 'dateistrings': ['Das ist ein neues\nHaus Maus Buch',
+  'Was kostet das neue Buch?\nBuch Haus Maus'],
+ 'df4': <generator object RePatterns._generator_json.<locals>.<genexpr> at 0x0000000012D56820>,
+ 'df5': array([list(['<stdin>', '1', '9', '8', 'mein']),
+        list(['<stdin>', '1', '14', '13', 'Buch']),
+        list(['<stdin>', '1', '35', '34', 'Buch'])], dtype=object),
+ 'df6': array([list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '515', '514', 'Auto']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '543', '542', 'Auto']),
+        list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '3358', '3357', 'Auto']),
+        ...,
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '52423818', '52423817', 'Auto']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '52426297', '52426296', 'Auto']),
+        list(['F:\\woerterbuecher\\wtxt\\xab.txt', '1', '52426444', '52426443', 'Auto'])],
+       dtype=object),
+ 'df7': <generator object RePatterns._generator_json.<locals>.<genexpr> at 0x0000000012B8C9E0>,
+ 'df8': <generator object RePatterns._generator_json.<locals>.<genexpr> at 0x0000000013209F20>,
+
+ 'df9': array([list(['F:\\nur_df\\wiki0001.txt', '1', '330', '329', '1968 infol']),
+        list(['F:\\nur_df\\wiki0001.txt', '1', '1916', '1915', '2007 sende']),
+        list(['F:\\nur_df\\wiki0001.txt', '1', '3079', '3078', '2000 immer']),
+        ...,
+        list(['F:\\nur_df\\wiki0001.txt', '1', '2016132', '2016131', '75 Jahre']),
+        list(['F:\\nur_df\\wiki0001.txt', '1', '2016203', '2016202', '2005 emeri']),
+        list(['F:\\nur_df\\wiki0001.txt', '1', '2017110', '2017109', '85 Jahre'])],
+       dtype=object),
+ 'df10': array([list(['F:\\nur_df', '1', '205', '204', '30 Kilom']),
+        list(['F:\\nur_df', '1', '245', '244', '30 Kilom']),
+        list(['F:\\nur_df', '1', '292', '291', '60 Kilom']), ...,
+        list(['F:\\nur_df', '1', '2016132', '2016131', '75 Jahre']),
+        list(['F:\\nur_df', '1', '2016203', '2016202', '2005 emeri']),
+        list(['F:\\nur_df', '1', '2017110', '2017109', '85 Jahre'])],
+       dtype=object),
+ 'df11': array([list(['F:\\nur_df', '1', '205', '204', 'Kilom']),
+        list(['F:\\nur_df', '1', '242', '241', 'Kilom']),
+        list(['F:\\nur_df', '1', '286', '285', 'Kilom']), ...,
+        list(['F:\\nur_df', '1', '2006047', '2006046', 'Jahre']),
+        list(['F:\\nur_df', '1', '2006115', '2006114', 'emeri']),
+        list(['F:\\nur_df', '1', '2007017', '2007016', 'Jahre'])],
+       dtype=object),
+ 'df12': array([list(['<stdin>', '1', '21', '20', '6. Janua']),
+        list(['<stdin>', '1', '303', '302', '18 Jahre']),
+        list(['<stdin>', '1', '555', '554', '6. Janua']),
+        list(['<stdin>', '1', '803', '802', '6. Janua'])], dtype=object),
+ 'df13': array([list(['<stdin>', '1', '21', '20', 'dudu Janua']),
+        list(['<stdin>', '1', '305', '304', 'dudu Jahre']),
+        list(['<stdin>', '1', '559', '558', 'dudu Janua']),
+        list(['<stdin>', '1', '809', '808', 'dudu Janua'])], dtype=object),
+ 'df14': <generator object RePatterns._generator_json.<locals>.<genexpr> at 0x000000001A28A120>,
+ 'dfxx':                             aa_filename  aa_line  ...  aa_byte_offset_o  aa_string
+ 0        F:\woerterbuecher\wtxt\xaa.txt        1  ...                 5        ter
+ 1        F:\woerterbuecher\wtxt\xaa.txt        1  ...                32        ber
+ 2        F:\woerterbuecher\wtxt\xaa.txt        1  ...                51        ton
+ 3        F:\woerterbuecher\wtxt\xaa.txt        1  ...                73        ber
+ 4        F:\woerterbuecher\wtxt\xaa.txt        1  ...               132        der
+ ...                                 ...      ...  ...               ...        ...
+ 3280734  F:\woerterbuecher\wtxt\xaa.txt        1  ...          52428724        ter
+ 3280735  F:\woerterbuecher\wtxt\xaa.txt        1  ...          52428741        der
+ 3280736  F:\woerterbuecher\wtxt\xaa.txt        1  ...          52428753        eyr
+ 3280737  F:\woerterbuecher\wtxt\xaa.txt        1  ...          52428770        ler
+ 3280738  F:\woerterbuecher\wtxt\xaa.txt        1  ...          52428797        ine
+ 
+ [3280739 rows x 5 columns],
+
+```
+
