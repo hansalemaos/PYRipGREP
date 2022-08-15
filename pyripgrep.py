@@ -184,7 +184,7 @@ class PDTools:
 class PyRipGREP:
     def __init__(
         self,
-        executeable=r"C:\Users\Gamer\scoop\apps\ripgrep\current\rg.exe",
+        executeable=r"rg.exe",
         option_targetfile=None,
     ):
 
@@ -4730,7 +4730,7 @@ class RePatterns:
         path_to_search: Union[str, list],
         outputtype: str = "df",
         binary: bool = True,
-        dfa_size: str = "30G",
+        dfa_size: str = "1G",
         ignore_case: bool = True,
         multiline: bool = False,
         multiline_dotall: bool = False,
