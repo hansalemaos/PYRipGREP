@@ -8,7 +8,7 @@ You'll find the files xaa.txt / xab.txt here: https://github.com/hansalemaos/PYR
 
 
 
-```
+```python
         outputtype = "np"
 
         suchennach = ["weniger", "mehr"]
