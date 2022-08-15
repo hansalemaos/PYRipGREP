@@ -257,3 +257,36 @@ Output:
 
 ```
 
+
+This is how you can use the class PyRipGREP directly (output as string!):
+```python
+        dfa_size: str = "1G",
+        regexstart = PyRipGREP()
+        search_for = _to_list(re_expression)
+        for suche in search_for:
+            regexstart.regexp(option=suche, activated=True, multi_allowed=True)
+
+        (
+            regexstart
+            .binary(activated=True)
+            .byte_offset(activated=True) 
+            .context_separator(option=" ")
+            .dfa_size_limit(option=dfa_size)
+            .field_match_separator(option= "ÇÇ") 
+            .ignore_case(activated=True)
+            .null_data(activated=True)
+            .line_number(activated=True)
+            .no_ignore(activated=True)
+            .multiline(activated=True)
+            .multiline_dotall(activated=True)
+            .block_buffered(activated=True)
+            .crlf(activated=True)
+            .no_config(activated=True)
+            .only_matching(activated=True)
+            .trim(activated=True)
+            .vimgrep(activated=True)
+            .with_filename(activated=True)
+            .add_target_file_or_folder('c:\\whatever.txt')
+        )
+
+```
