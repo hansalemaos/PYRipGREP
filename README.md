@@ -53,10 +53,7 @@ You'll find the files xaa.txt / xab.txt here: https://github.com/hansalemaos/PYR
             ignore_case=ignore_case,
         )
         print(f"{df3=}")
-        # variable = [
-        #     "C:\debugtools\dmpfiles\proddump.dmp",
-        #     "C:\debugtools\dmpfiles\procsave2.dmp",
-        # ]
+
         dateistrings = [
             "Das ist ein neues\nHaus Maus Buch",
             "Was kostet das neue Buch?\nBuch Haus Maus",
@@ -192,8 +189,7 @@ Output:
         list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52322927', '52322926', 'Buch']),
         list(['F:\\woerterbuecher\\wtxt\\xaa.txt', '1', '52323198', '52323197', 'Buch'])],
        dtype=object),
- 'dateistrings': ['Das ist ein neues\nHaus Maus Buch',
-  'Was kostet das neue Buch?\nBuch Haus Maus'],
+
  'df4': <generator object RePatterns._generator_json.<locals>.<genexpr> at 0x0000000012D56820>,
  'df5': array([list(['<stdin>', '1', '9', '8', 'mein']),
         list(['<stdin>', '1', '14', '13', 'Buch']),
