@@ -5,6 +5,9 @@ You can use the class ```python PyRipGREP``` as you would use ripgrep, but you w
 
 Check it out:
 You'll find the files xaa.txt / xab.txt here: https://github.com/hansalemaos/PYRipGREP/tree/main/textfilesfortests
+Make sure to have rg.exe in your path or pass the path when you create the instance: 
+
+```pythonRePatterns(r'c:\\blalbalbalba\rg.exe')```
 
 
 
