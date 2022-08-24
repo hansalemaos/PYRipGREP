@@ -30,11 +30,9 @@ import pandas as pd
 import re
 import regex
 import ujson  # python -m pip install ujson
-from dfprinter import PandasPrinter
 import numpy as np
 from tempfile import SpooledTemporaryFile as tempfile
 
-d = lambda x: PandasPrinter(x, column_max_width=200).print_pd()
 
 
 class Trie:
