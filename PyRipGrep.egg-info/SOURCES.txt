@@ -1,0 +1,8 @@
+README.md
+setup.py
+PyRipGrep/__init__.py
+PyRipGrep.egg-info/PKG-INFO
+PyRipGrep.egg-info/SOURCES.txt
+PyRipGrep.egg-info/dependency_links.txt
+PyRipGrep.egg-info/requires.txt
+PyRipGrep.egg-info/top_level.txt

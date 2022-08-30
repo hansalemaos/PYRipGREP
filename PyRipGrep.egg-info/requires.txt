@@ -1,0 +1,5 @@
+regex
+pandas
+numpy
+ujson
+flatten_everything

@@ -1,5 +1,6 @@
 r"""
-Wrapper for ripgrep by Johannes Fischer 
+Wrapper for ripgrep by Johannes Fischer
+Download RipGrep: https://github.com/BurntSushi/ripgrep
 
 Original License:
 
@@ -32,7 +33,7 @@ import regex
 import ujson  # python -m pip install ujson
 import numpy as np
 from tempfile import SpooledTemporaryFile as tempfile
-
+from flatten_everything import flatten_everything
 
 
 class Trie:
@@ -108,13 +109,13 @@ class Trie:
         return self._pattern(self.dump())
 
     def trie_regex_from_words(
-        self,
-        words,
-        boundary_right=True,
-        boundary_left=True,
-        capture=False,
-        ignorecase=False,
-        match_whole_line=False,
+            self,
+            words,
+            boundary_right=True,
+            boundary_left=True,
+            capture=False,
+            ignorecase=False,
+            match_whole_line=False,
     ):
         for word in words:
             self.add(word)
@@ -147,11 +148,11 @@ class PDTools:
         return self.dataframe.copy()
 
     def aa_pd_horizonal_explode(
-        self,
-        what_columns: iter,
-        zfill: int = 4,
-        handle_nan: bool = True,
-        delete_old_cols: bool = True,
+            self,
+            what_columns: iter,
+            zfill: int = 4,
+            handle_nan: bool = True,
+            delete_old_cols: bool = True,
     ):
         dataframe = self.bb_return_copy()
         for col in what_columns:
@@ -181,9 +182,9 @@ class PDTools:
 
 class PyRipGREP:
     def __init__(
-        self,
-        executeable=r"rg.exe",
-        option_targetfile=None,
+            self,
+            executeable=r"rg.exe",
+            option_targetfile=None,
     ):
 
         self.tempfile_for_vars = "PyRipGREP.PyRtmp"
@@ -534,9 +535,9 @@ class PyRipGREP:
         return self
 
     def run(
-        self,
-        capture_output: bool = True,
-        save_output_with_shell: Union[None, str] = None,
+            self,
+            capture_output: bool = True,
+            save_output_with_shell: Union[None, str] = None,
     ):
         self.last_command_line_called = []
         regexlist = []
@@ -551,7 +552,6 @@ class PyRipGREP:
         ]
         add_to_search_list = []
         for key, item, real_value in add_to_search:
-            print(key, item)
             if isinstance(real_value, bool):
 
                 add_to_search_list.append([key])
@@ -628,9 +628,9 @@ class PyRipGREP:
         keytocheck = ""
         while are_there_more:
             keytocheck = (
-                f"{key_to_check}"
-                + self.separador_for_multiple_arguments
-                + str(startvalue)
+                    f"{key_to_check}"
+                    + self.separador_for_multiple_arguments
+                    + str(startvalue)
             )
             if not keytocheck in self.execute_dict:
                 are_there_more = False
@@ -649,7 +649,7 @@ class PyRipGREP:
         pass
 
     def after_context(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Show NUM lines after each match.  This overrides the --context and --passthru flags."""
         if get_help:
@@ -682,7 +682,7 @@ class PyRipGREP:
         return self
 
     def auto_hybrid_regex(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """DEPRECATED. Use --engine instead.  When this flag is used, ripgrep will dynamically choose between
         supported regex engines depending on the features used in a pattern. When ripgrep chooses a regex
@@ -730,7 +730,7 @@ class PyRipGREP:
         return self
 
     def before_context(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Show NUM lines before each match.  This overrides the --context and --passthru flags."""
         if get_help:
@@ -810,7 +810,7 @@ class PyRipGREP:
         return self
 
     def block_buffered(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When enabled, ripgrep will use block buffering. That is, whenever a matching line is found, it will
         be written to an in-memory buffer and will not be written to stdout until the buffer reaches a
@@ -850,7 +850,7 @@ class PyRipGREP:
         return self
 
     def byte_offset(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Print the 0-based byte offset within the input file before each line of output. If -o (--only-
         matching) is specified, print the offset of the matching part itself.  If ripgrep does transcoding,
@@ -887,7 +887,7 @@ class PyRipGREP:
         return self
 
     def case_sensitive(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Search case sensitively.  This overrides the -i/--ignore-case and -S/--smart-case flags."""
         if get_help:
@@ -1070,7 +1070,7 @@ class PyRipGREP:
         return self
 
     def context_separator(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """The string used to separate non-contiguous context lines in the output. This is only used when one
         of the context flags is used (-A, -B or -C). Escape sequences like  or      may be used. The
@@ -1145,7 +1145,7 @@ class PyRipGREP:
         return self
 
     def count_matches(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """This flag suppresses normal output and shows the number of individual matches of the given patterns
         for each file searched. Each file containing matches has its path and match count printed on each
@@ -1255,7 +1255,7 @@ class PyRipGREP:
         return self
 
     def dfa_size_limit(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """The upper size limit of the regex DFA. The default limit is 10M. This should only be changed on
         very large regex inputs where the (slower) fallback regex engine may otherwise be used if the limit
@@ -1290,7 +1290,7 @@ class PyRipGREP:
         return self
 
     def encoding(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Specify the text encoding that ripgrep will use on all files searched. The default value is 'auto',
         which will cause ripgrep to do a best effort automatic detection of encoding on a per-file basis.
@@ -1369,7 +1369,7 @@ class PyRipGREP:
         return self
 
     def field_context_separator(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Set the field context separator, which is used to delimit file paths, line numbers, columns and the
         context itself, when printing contextual lines. The separator may be any number of bytes, including
@@ -1392,8 +1392,8 @@ class PyRipGREP:
 
         elif option is not None and activated:
             if (
-                self.execute_dict["--field-context-separator"] is False
-                and not multi_allowed
+                    self.execute_dict["--field-context-separator"] is False
+                    and not multi_allowed
             ):
                 self.execute_dict["--field-context-separator"] = option
             varformulti = option
@@ -1407,7 +1407,7 @@ class PyRipGREP:
         return self
 
     def field_match_separator(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Set the field match separator, which is used to delimit file paths, line numbers, columns and the
         match itself. The separator may be any number of bytes, including zero. Escape sequences like  or
@@ -1430,8 +1430,8 @@ class PyRipGREP:
 
         elif option is not None and activated:
             if (
-                self.execute_dict["--field-match-separator"] is False
-                and not multi_allowed
+                    self.execute_dict["--field-match-separator"] is False
+                    and not multi_allowed
             ):
                 self.execute_dict["--field-match-separator"] = option
             varformulti = option
@@ -1511,7 +1511,7 @@ class PyRipGREP:
         return self
 
     def files_with_matches(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Print the paths with at least one match and suppress match contents.  This overrides --files-
         without-match."""
@@ -1545,7 +1545,7 @@ class PyRipGREP:
         return self
 
     def files_without_match(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Print the paths that contain zero matches and suppress match contents. This inverts/negates the
         --files-with-matches flag.  This overrides --files-with-matches."""
@@ -1567,8 +1567,8 @@ class PyRipGREP:
 
         elif option is not None and activated:
             if (
-                self.execute_dict["--files-without-match"] is False
-                and not multi_allowed
+                    self.execute_dict["--files-without-match"] is False
+                    and not multi_allowed
             ):
                 self.execute_dict["--files-without-match"] = option
             varformulti = option
@@ -1582,7 +1582,7 @@ class PyRipGREP:
         return self
 
     def fixed_strings(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Treat the pattern as a literal string instead of a regular expression. When this flag is used,
         special regular expression meta characters such as .(){}*+ do not need to be escaped.  This flag can
@@ -1691,7 +1691,7 @@ class PyRipGREP:
         return self
 
     def glob_case_insensitive(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Process glob patterns given with the -g/--glob flag case insensitively. This effectively treats
         --glob as --iglob.  This flag can be disabled with the --no-glob-case-insensitive flag."""
@@ -1713,8 +1713,8 @@ class PyRipGREP:
 
         elif option is not None and activated:
             if (
-                self.execute_dict["--glob-case-insensitive"] is False
-                and not multi_allowed
+                    self.execute_dict["--glob-case-insensitive"] is False
+                    and not multi_allowed
             ):
                 self.execute_dict["--glob-case-insensitive"] = option
             varformulti = option
@@ -1860,7 +1860,7 @@ class PyRipGREP:
         return self
 
     def ignore_case(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When this flag is provided, the given patterns will be searched case insensitively. The case
         insensitivity rules used by ripgrep conform to Unicode's "simple" case folding rules.  This flag
@@ -1895,7 +1895,7 @@ class PyRipGREP:
         return self
 
     def ignore_file(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Specifies a path to one or more .gitignore format rules files. These patterns are applied after the
         patterns found in .gitignore and .ignore are applied and are matched relative to the current working
@@ -1933,7 +1933,7 @@ class PyRipGREP:
         return self
 
     def ignore_file_case_insensitive(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Process ignore files (.gitignore, .ignore, etc.) case insensitively. Note that this comes with a
         performance penalty and is most useful on case insensitive file systems (such as Windows).  This
@@ -1956,8 +1956,8 @@ class PyRipGREP:
 
         elif option is not None and activated:
             if (
-                self.execute_dict["--ignore-file-case-insensitive"] is False
-                and not multi_allowed
+                    self.execute_dict["--ignore-file-case-insensitive"] is False
+                    and not multi_allowed
             ):
                 self.execute_dict["--ignore-file-case-insensitive"] = option
             varformulti = option
@@ -1971,7 +1971,7 @@ class PyRipGREP:
         return self
 
     def include_zero(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When used with --count or --count-matches, print the number of matches for each file even if there
         were zero matches. This is disabled by default but can be enabled to make ripgrep behave more like
@@ -2006,7 +2006,7 @@ class PyRipGREP:
         return self
 
     def invert_match(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Invert matching. Show lines that do not match the given patterns."""
         if get_help:
@@ -2088,7 +2088,7 @@ class PyRipGREP:
         return self
 
     def line_buffered(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When enabled, ripgrep will use line buffering. That is, whenever a matching line is found, it will
         be flushed to stdout immediately. This is the default when ripgrep's stdout is connected to a
@@ -2128,7 +2128,7 @@ class PyRipGREP:
         return self
 
     def line_number(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Show line numbers (1-based). This is enabled by default when searching in a terminal."""
         if get_help:
@@ -2161,7 +2161,7 @@ class PyRipGREP:
         return self
 
     def line_regexp(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Only show matches surrounded by line boundaries. This is equivalent to putting ^...$ around all of
         the search patterns. In other words, this only prints lines where the entire line participates in a
@@ -2196,7 +2196,7 @@ class PyRipGREP:
         return self
 
     def max_columns(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't print lines longer than this limit in bytes. Longer lines are omitted, and only the number of
         matches in that line is printed.  When this flag is omitted or is set to 0, then it has no effect."""
@@ -2230,7 +2230,7 @@ class PyRipGREP:
         return self
 
     def max_columns_preview(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When the '--max-columns' flag is used, ripgrep will by default completely replace any line that is
         too long with a message indicating that a matching line was removed. When this flag is combined with
@@ -2255,8 +2255,8 @@ class PyRipGREP:
 
         elif option is not None and activated:
             if (
-                self.execute_dict["--max-columns-preview"] is False
-                and not multi_allowed
+                    self.execute_dict["--max-columns-preview"] is False
+                    and not multi_allowed
             ):
                 self.execute_dict["--max-columns-preview"] = option
             varformulti = option
@@ -2270,7 +2270,7 @@ class PyRipGREP:
         return self
 
     def max_count(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Limit the number of matching lines per file searched to NUM."""
         if get_help:
@@ -2303,7 +2303,7 @@ class PyRipGREP:
         return self
 
     def max_depth(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Limit the depth of directory traversal to NUM levels beyond the paths given. A value of zero only
         searches the explicitly given paths themselves.  For example, 'rg --max-depth 0 dir/' is a no-op
@@ -2339,7 +2339,7 @@ class PyRipGREP:
         return self
 
     def max_filesize(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Ignore files larger than NUM in size. This does not apply to directories.  The input format accepts
         suffixes of K, M or G which correspond to kilobytes, megabytes and gigabytes, respectively. If no
@@ -2410,7 +2410,7 @@ class PyRipGREP:
         return self
 
     def multiline(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Enable matching across multiple lines.  When multiline mode is enabled, ripgrep will lift the
         restriction that a match cannot include a line terminator. For example, when multiline mode is not
@@ -2464,7 +2464,7 @@ class PyRipGREP:
         return self
 
     def multiline_dotall(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """This flag enables "dot all" in your regex pattern, which causes '.' to match newlines when
         multiline searching is enabled. This flag has no effect if multiline searching isn't enabled with
@@ -2506,7 +2506,7 @@ class PyRipGREP:
         return self
 
     def no_config(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Never read configuration files. When this flag is present, ripgrep will not respect the
         RIPGREP_CONFIG_PATH environment search_in.  If ripgrep ever grows a feature to automatically read
@@ -2542,7 +2542,7 @@ class PyRipGREP:
         return self
 
     def no_filename(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Never print the file path with the matched lines. This is the default when ripgrep is explicitly
         instructed to search one file or stdin.  This flag overrides --with-filename."""
@@ -2576,7 +2576,7 @@ class PyRipGREP:
         return self
 
     def no_heading(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't group matches by each file. If --no-heading is provided in addition to the -H/--with-filename
         flag, then file paths will be printed as a prefix for every matched line. This is the default mode
@@ -2611,7 +2611,7 @@ class PyRipGREP:
         return self
 
     def no_ignore(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't respect ignore files (.gitignore, .ignore, etc.). This implies no-ignore-dot, --no-ignore-
         exclude, --no-ignore-global, no-ignore-parent and no-ignore-vcs.  This does *not* imply --no-ignore-
@@ -2649,7 +2649,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_dot(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't respect .ignore files.  This does *not* affect whether ripgrep will ignore files and
         directories whose names begin with a dot. For that, see the -./--hidden flag.  This flag can be
@@ -2684,7 +2684,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_exclude(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't respect ignore files that are manually configured for the repository such as git's
         '.git/info/exclude'.  This flag can be disabled with the --ignore-exclude flag."""
@@ -2718,7 +2718,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_files(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When set, any --ignore-file flags, even ones that come after this flag, are ignored.  This flag can
         be disabled with the --ignore-files flag."""
@@ -2752,7 +2752,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_global(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't respect ignore files that come from "global" sources such as git's `core.excludesFile`
         configuration option (which defaults to `$HOME/.config/git/ignore`).  This flag can be disabled with
@@ -2787,7 +2787,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_messages(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Suppresses all error messages related to parsing ignore files such as .ignore or .gitignore.  This
         flag can be disabled with the --ignore-messages flag."""
@@ -2821,7 +2821,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_parent(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't respect ignore files (.gitignore, .ignore, etc.) in parent directories.  This flag can be
         disabled with the --ignore-parent flag."""
@@ -2855,7 +2855,7 @@ class PyRipGREP:
         return self
 
     def no_ignore_vcs(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Don't respect version control ignore files (.gitignore, etc.). This implies no-ignore-parent for
         VCS files. Note that .ignore files will continue to be respected.  This flag can be disabled with
@@ -2890,7 +2890,7 @@ class PyRipGREP:
         return self
 
     def no_line_number(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Suppress line numbers. This is enabled by default when not searching in a terminal."""
         if get_help:
@@ -2923,7 +2923,7 @@ class PyRipGREP:
         return self
 
     def no_messages(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Suppress all error messages related to opening and reading files. Error messages related to the
         syntax of the pattern given are still shown.  This flag can be disabled with the --messages flag."""
@@ -2988,7 +2988,7 @@ class PyRipGREP:
         return self
 
     def no_pcre2_unicode(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """DEPRECATED. Use --no-unicode instead.  This flag is now an alias for --no-unicode. And
         --pcre2-unicode is an alias for --unicode."""
@@ -3022,7 +3022,7 @@ class PyRipGREP:
         return self
 
     def no_require_git(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """By default, ripgrep will only respect global gitignore rules, .gitignore rules and local exclude
         rules if ripgrep detects that you are searching inside a git repository. This flag allows you to
@@ -3058,7 +3058,7 @@ class PyRipGREP:
         return self
 
     def no_unicode(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """By default, ripgrep will enable "Unicode mode" in all of its regexes. This has a number of
         consequences:  * '.' will only match valid UTF-8 encoded scalar values. * Classes like '\w', '\s',
@@ -3141,7 +3141,7 @@ class PyRipGREP:
         return self
 
     def null_data(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Enabling this option causes ripgrep to use NUL as a line terminator instead of the default of '.
         This is useful when searching large binary files that would otherwise have very long lines if '
@@ -3180,7 +3180,7 @@ class PyRipGREP:
         return self
 
     def one_file_system(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When enabled, ripgrep will not cross file system boundaries relative to where the search started
         from.  Note that this applies to each path argument given to ripgrep. For example, in the command
@@ -3218,7 +3218,7 @@ class PyRipGREP:
         return self
 
     def only_matching(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Print only the matched (non-empty) parts of a matching line, with each such part on a separate
         output line."""
@@ -3252,7 +3252,7 @@ class PyRipGREP:
         return self
 
     def passthru(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Print both matching and non-matching lines.  Another way to achieve a similar effect is by
         modifying your pattern to match the empty string. For example, if you are searching using 'rg foo'
@@ -3289,7 +3289,7 @@ class PyRipGREP:
         return self
 
     def path_separator(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Set the path separator to use when printing file paths. This defaults to your platform's path
         separator, which is / on Unix and \ on Windows. This flag is intended for overriding the default
@@ -3363,7 +3363,7 @@ class PyRipGREP:
         return self
 
     def pcre2_version(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """When this flag is present, ripgrep will print the version of PCRE2 in use, along with other
         information, and then exit. If PCRE2 is not available, then ripgrep will print an error message and
@@ -3511,7 +3511,7 @@ class PyRipGREP:
         return self
 
     def regex_size_limit(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """The upper size limit of the compiled regex. The default limit is 10M.  The argument accepts the
         same size suffixes as allowed in the --max-filesize flag."""
@@ -3619,7 +3619,7 @@ class PyRipGREP:
         return self
 
     def search_zip(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Search in compressed files. Currently gzip, bzip2, xz, LZ4, LZMA, Brotli and Zstd files are
         supported. This option expects the decompression binaries to be available in your PATH.  This flag
@@ -3654,7 +3654,7 @@ class PyRipGREP:
         return self
 
     def smart_case(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise.  A
         pattern is considered all lowercase if both of the following rules hold:  First, the pattern
@@ -3944,7 +3944,7 @@ class PyRipGREP:
         return self
 
     def type_add(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Add a new glob for a particular file type. Only one glob can be added at a time. Multiple --type-
         add flags can be provided. Unless --type-clear is used, globs are added to any existing globs
@@ -3988,7 +3988,7 @@ class PyRipGREP:
         return self
 
     def type_clear(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """... Clear the file type globs previously defined for TYPE. This only clears the default type
         definitions that are found inside of ripgrep.  Note that this MUST be passed to every invocation of
@@ -4023,7 +4023,7 @@ class PyRipGREP:
         return self
 
     def type_list(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Show all supported file types and their corresponding globs."""
         if get_help:
@@ -4056,7 +4056,7 @@ class PyRipGREP:
         return self
 
     def type_not(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """... Do not search files matching TYPE. Multiple type-not flags may be provided. Use the --type-
         list flag to list all available types."""
@@ -4090,7 +4090,7 @@ class PyRipGREP:
         return self
 
     def unrestricted(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Reduce the level of "smart" searching. A single -u won't respect .gitignore (etc.) files (--no-
         ignore). Two -u flags will additionally search hidden files and directories (-./--hidden). Three -u
@@ -4189,7 +4189,7 @@ class PyRipGREP:
         return self
 
     def with_filename(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Display the file path for matches. This is the default when more than one file is searched. If
         --heading is enabled (the default when printing to a terminal), the file path will be shown above
@@ -4225,7 +4225,7 @@ class PyRipGREP:
         return self
 
     def word_regexp(
-        self, option=None, activated=True, multi_allowed=False, get_help=False
+            self, option=None, activated=True, multi_allowed=False, get_help=False
     ):
         """Only show matches surrounded by word boundaries. This is roughly equivalent to putting before and
         after all of the search patterns.  This overrides the --line-regexp flag."""
@@ -4260,8 +4260,9 @@ class PyRipGREP:
 
 
 class RePatterns:
-    def __init__(self):
-        self.pygrep = PyRipGREP()
+    def __init__(self, executeable=r"rg.exe"):
+        self.executeable = executeable
+        self.pygrep = PyRipGREP(executeable=self.executeable)
 
     def _convert_std_lst(self, ziptemp, numpy_df_or_gen):
         if numpy_df_or_gen == "df":
@@ -4289,6 +4290,8 @@ class RePatterns:
                 [[x[0][0], *x[0][1]] for x in zip(ziptemp)],
                 dtype="object",
             )
+            df = np.array([x for x in flatten_everything(df)])
+            df = df.reshape((-1, 5))
         return df
 
     def _return_if_nothing_found(self, outputtype):
@@ -4383,18 +4386,18 @@ class RePatterns:
         return (
             self._check_key(di)
             for di in [
-                [
-                    self.delete_beginning_end_stats(
-                        regex.sub(
-                            r'\{"type":"begin"[^\}]+\}\}\}', """\"end\": 1}]}}""", va
-                        )
+            [
+                self.delete_beginning_end_stats(
+                    regex.sub(
+                        r'\{"type":"begin"[^\}]+\}\}\}', """\"end\": 1}]}}""", va
                     )
-                    for va in spli.stdout.decode(
-                        outputencoding, errors="ignore"
-                    ).splitlines()
-                ]
-                for spli in result
+                )
+                for va in spli.stdout.decode(
+                outputencoding, errors="ignore"
+            ).splitlines()
             ]
+            for spli in result
+        ]
         )
 
     def _format_json_dataframe(self, finalresult):
@@ -4454,39 +4457,39 @@ class RePatterns:
         return ndf2
 
     def find_all_in_files_json(
-        self,
-        re_expression: Union[str, list],
-        search_in: Union[str, list],
-        outputtype: str = "df",
-        binary: bool = True,
-        dfa_size: str = "10G",
-        ignore_case: bool = True,
-        multiline: bool = False,
-        multiline_dotall: bool = False,
-        outputencoding: str = "utf-8",
+            self,
+            re_expression: Union[str, list],
+            search_in: Union[str, list],
+            outputtype: str = "df",
+            binary: bool = True,
+            dfa_size: str = "10G",
+            ignore_case: bool = True,
+            multiline: bool = False,
+            multiline_dotall: bool = False,
+            outputencoding: str = "utf-8",
     ):
         all_results = []
         search_in = self._to_list(search_in)
         re_expression = self._to_list(re_expression)
-        regexstart = PyRipGREP()
+        regexstart = PyRipGREP(executeable=self.executeable)
 
         for e in re_expression:
             regexstart.regexp(option=e, multi_allowed=True)
         for temptext in search_in:
             (
                 regexstart.json(activated=True)
-                .binary(activated=binary)
-                .dfa_size_limit(option=dfa_size)
-                .ignore_case(option=ignore_case)
-                .null_data(activated=True)
-                .no_ignore(activated=True)
-                .trim(activated=True)
-                .block_buffered(activated=True)
-                .crlf(activated=True)
-                .no_config(activated=True)
-                .multiline(activated=multiline)
-                .multiline_dotall(activated=multiline_dotall)
-                .add_target_file_or_folder(temptext)
+                    .binary(activated=binary)
+                    .dfa_size_limit(option=dfa_size)
+                    .ignore_case(option=ignore_case)
+                    .null_data(activated=True)
+                    .no_ignore(activated=True)
+                    .trim(activated=True)
+                    .block_buffered(activated=True)
+                    .crlf(activated=True)
+                    .no_config(activated=True)
+                    .multiline(activated=multiline)
+                    .multiline_dotall(activated=multiline_dotall)
+                    .add_target_file_or_folder(temptext)
             )
             erg = regexstart.run()
             all_results.append(erg)
@@ -4500,38 +4503,38 @@ class RePatterns:
             return self._return_if_nothing_found(outputtype)
 
     def find_all_in_var_json(
-        self,
-        re_expression: Union[str, list],
-        variable: Union[str, bin],
-        outputtype: str = "df",
-        binary: bool = True,
-        dfa_size: str = "10G",
-        ignore_case: bool = True,
-        multiline: bool = False,
-        multiline_dotall: bool = False,
-        outputencoding: str = "utf-8",
+            self,
+            re_expression: Union[str, list],
+            variable: Union[str, bin],
+            outputtype: str = "df",
+            binary: bool = True,
+            dfa_size: str = "10G",
+            ignore_case: bool = True,
+            multiline: bool = False,
+            multiline_dotall: bool = False,
+            outputencoding: str = "utf-8",
     ):
 
         re_expression = self._to_list(re_expression)
-        regexstart = PyRipGREP()
+        regexstart = PyRipGREP(executeable=self.executeable)
         for e in re_expression:
             regexstart.regexp(option=e, multi_allowed=True)
 
         (
             regexstart.json(activated=True)
-            .binary(activated=binary)
-            .dfa_size_limit(option=dfa_size)
-            .ignore_case(activated=ignore_case)
-            .null_data(activated=True)
-            # .null()
-            .no_ignore(activated=True)
-            .trim(activated=True)
-            .block_buffered(activated=True)
-            .crlf(activated=True)
-            .no_config(activated=True)
-            .multiline(activated=multiline)
-            .multiline_dotall(activated=multiline_dotall)
-            .add_python_variable_instead_of_file(variable)
+                .binary(activated=binary)
+                .dfa_size_limit(option=dfa_size)
+                .ignore_case(activated=ignore_case)
+                .null_data(activated=True)
+                # .null()
+                .no_ignore(activated=True)
+                .trim(activated=True)
+                .block_buffered(activated=True)
+                .crlf(activated=True)
+                .no_config(activated=True)
+                .multiline(activated=multiline)
+                .multiline_dotall(activated=multiline_dotall)
+                .add_python_variable_instead_of_file(variable)
         )
         erg = regexstart.run()
 
@@ -4545,7 +4548,7 @@ class RePatterns:
             return self._return_if_nothing_found(outputtype)
 
     def _format_output_after_search_in_vars(
-        self, result, outputencoding, field_match_separator
+            self, result, outputencoding, field_match_separator
     ):
         result3 = self._decode_output_lst(result, outputencoding=outputencoding)
         path_to_search = "<stdin>"
@@ -4555,45 +4558,45 @@ class RePatterns:
         return ziptemp
 
     def sub_all_in_var(
-        self,
-        re_expression: Union[str, list],
-        repl: str,
-        variable: Union[str, list],
-        outputtype: str = "df",
-        binary: bool = True,
-        dfa_size: str = "10G",
-        ignore_case: bool = True,
-        multiline: bool = False,
-        multiline_dotall: bool = False,
-        outputencoding: str = "utf-8",
-        field_match_separator: str = "ÇÇ",
+            self,
+            re_expression: Union[str, list],
+            repl: str,
+            variable: Union[str, list],
+            outputtype: str = "df",
+            binary: bool = True,
+            dfa_size: str = "10G",
+            ignore_case: bool = True,
+            multiline: bool = False,
+            multiline_dotall: bool = False,
+            outputencoding: str = "utf-8",
+            field_match_separator: str = "ÇÇ",
     ):
 
-        regexstart = PyRipGREP()
+        regexstart = PyRipGREP(executeable=self.executeable)
         search_for = self._to_list(re_expression)
         for suche in search_for:
             regexstart.regexp(option=suche, activated=True, multi_allowed=True)
 
         (
             regexstart.binary(activated=binary)
-            .byte_offset(activated=True)  # before
-            .context_separator(option=" ")
-            .dfa_size_limit(option=dfa_size)
-            .field_match_separator(option=field_match_separator)
-            .ignore_case(activated=ignore_case)
-            .null_data(activated=True)
-            .line_number(activated=True)
-            .no_ignore(activated=True)
-            .multiline(activated=multiline)
-            .multiline_dotall(activated=multiline_dotall)
-            .block_buffered(activated=True)
-            .crlf(activated=True)
-            .no_config(activated=True)
-            .only_matching(activated=True)
-            .trim(activated=True)
-            .vimgrep(activated=True)
-            .replace(option=repl)
-            .add_python_variable_instead_of_file(variable)
+                .byte_offset(activated=True)  # before
+                .context_separator(option=" ")
+                .dfa_size_limit(option=dfa_size)
+                .field_match_separator(option=field_match_separator)
+                .ignore_case(activated=ignore_case)
+                .null_data(activated=True)
+                .line_number(activated=True)
+                .no_ignore(activated=True)
+                .multiline(activated=multiline)
+                .multiline_dotall(activated=multiline_dotall)
+                .block_buffered(activated=True)
+                .crlf(activated=True)
+                .no_config(activated=True)
+                .only_matching(activated=True)
+                .trim(activated=True)
+                .vimgrep(activated=True)
+                .replace(option=repl)
+                .add_python_variable_instead_of_file(variable)
         )
 
         result2 = regexstart.run(capture_output=True, save_output_with_shell=None)
@@ -4608,43 +4611,43 @@ class RePatterns:
             return self._return_if_nothing_found(outputtype)
 
     def find_all_in_var(
-        self,
-        re_expression: Union[str, list],
-        variable: Union[str, list],
-        outputtype: str = "df",
-        binary: bool = True,
-        dfa_size: str = "10G",
-        ignore_case: bool = True,
-        multiline: bool = False,
-        multiline_dotall: bool = False,
-        outputencoding: str = "utf-8",
-        field_match_separator: str = "ÇÇ",
+            self,
+            re_expression: Union[str, list],
+            variable: Union[str, list],
+            outputtype: str = "df",
+            binary: bool = True,
+            dfa_size: str = "10G",
+            ignore_case: bool = True,
+            multiline: bool = False,
+            multiline_dotall: bool = False,
+            outputencoding: str = "utf-8",
+            field_match_separator: str = "ÇÇ",
     ):
 
-        regexstart = PyRipGREP()
+        regexstart = PyRipGREP(executeable=self.executeable)
         search_for = self._to_list(re_expression)
         for suche in search_for:
             regexstart.regexp(option=suche, activated=True, multi_allowed=True)
 
         (
             regexstart.binary(activated=binary)
-            .byte_offset(activated=True)  # before
-            .context_separator(option=" ")
-            .dfa_size_limit(option=dfa_size)
-            .field_match_separator(option=field_match_separator)
-            .ignore_case(activated=ignore_case)
-            .null_data(activated=True)
-            .line_number(activated=True)
-            .no_ignore(activated=True)
-            .multiline(activated=multiline)
-            .multiline_dotall(activated=multiline_dotall)
-            .block_buffered(activated=True)
-            .crlf(activated=True)
-            .no_config(activated=True)
-            .only_matching(activated=True)
-            .trim(activated=True)
-            .vimgrep(activated=True)
-            .add_python_variable_instead_of_file(variable)
+                .byte_offset(activated=True)  # before
+                .context_separator(option=" ")
+                .dfa_size_limit(option=dfa_size)
+                .field_match_separator(option=field_match_separator)
+                .ignore_case(activated=ignore_case)
+                .null_data(activated=True)
+                .line_number(activated=True)
+                .no_ignore(activated=True)
+                .multiline(activated=multiline)
+                .multiline_dotall(activated=multiline_dotall)
+                .block_buffered(activated=True)
+                .crlf(activated=True)
+                .no_config(activated=True)
+                .only_matching(activated=True)
+                .trim(activated=True)
+                .vimgrep(activated=True)
+                .add_python_variable_instead_of_file(variable)
         )
 
         result2 = regexstart.run(capture_output=True, save_output_with_shell=None)
@@ -4659,7 +4662,7 @@ class RePatterns:
             return self._return_if_nothing_found(outputtype)
 
     def _format_output_after_search_in_files(
-        self, result, outputencoding, field_match_separator, path_to_search
+            self, result, outputencoding, field_match_separator, path_to_search
     ):
         result3 = self._decode_output_lst(result, outputencoding=outputencoding)
         result4 = self._delete_trash_lst(result3, path_to_search)
@@ -4668,48 +4671,48 @@ class RePatterns:
         return ziptemp
 
     def sub_in_files(
-        self,
-        re_expression: Union[str, list],
-        repl: str,
-        path_to_search: Union[str, list],
-        outputtype: str = "df",
-        binary: bool = True,
-        dfa_size: str = "10G",
-        ignore_case: bool = True,
-        multiline: bool = False,
-        multiline_dotall: bool = False,
-        outputencoding: str = "utf-8",
-        field_match_separator: str = "ÇÇ",
+            self,
+            re_expression: Union[str, list],
+            repl: str,
+            path_to_search: Union[str, list],
+            outputtype: str = "df",
+            binary: bool = True,
+            dfa_size: str = "10G",
+            ignore_case: bool = True,
+            multiline: bool = False,
+            multiline_dotall: bool = False,
+            outputencoding: str = "utf-8",
+            field_match_separator: str = "ÇÇ",
     ):
-        regexstart = PyRipGREP()
+        regexstart = PyRipGREP(executeable=self.executeable)
         search_for = self._to_list(re_expression)
         for suche in search_for:
             regexstart.regexp(option=suche, activated=True, multi_allowed=True)
         (
             regexstart
-            # PyRipGREP()
-            # .reset_options()
-            # .regexp(suchennach, multi_allowed=True)
-            .binary(activated=binary)
-            .byte_offset(activated=True)  # before
-            .context_separator(option=" ")
-            .dfa_size_limit(option=dfa_size)
-            .field_match_separator(option=field_match_separator)
-            .ignore_case(activated=ignore_case)
-            .null_data(activated=True)
-            .line_number(activated=True)
-            .no_ignore(activated=True)
-            .multiline(activated=multiline)
-            .multiline_dotall(activated=multiline_dotall)
-            .block_buffered(activated=True)
-            .crlf(activated=True)
-            .no_config(activated=True)
-            .only_matching(activated=True)
-            .trim(activated=True)
-            .vimgrep(activated=True)
-            .with_filename(activated=True)
-            .add_target_file_or_folder(path_to_search)
-            .replace(option=repl)
+                # PyRipGREP()
+                # .reset_options()
+                # .regexp(suchennach, multi_allowed=True)
+                .binary(activated=binary)
+                .byte_offset(activated=True)  # before
+                .context_separator(option=" ")
+                .dfa_size_limit(option=dfa_size)
+                .field_match_separator(option=field_match_separator)
+                .ignore_case(activated=ignore_case)
+                .null_data(activated=True)
+                .line_number(activated=True)
+                .no_ignore(activated=True)
+                .multiline(activated=multiline)
+                .multiline_dotall(activated=multiline_dotall)
+                .block_buffered(activated=True)
+                .crlf(activated=True)
+                .no_config(activated=True)
+                .only_matching(activated=True)
+                .trim(activated=True)
+                .vimgrep(activated=True)
+                .with_filename(activated=True)
+                .add_target_file_or_folder(path_to_search)
+                .replace(option=repl)
         )
         path_to_search = self._escape_filenames_lst(path_to_search)
         result2 = regexstart.run(capture_output=True, save_output_with_shell=None)
@@ -4723,48 +4726,45 @@ class RePatterns:
             return self._return_if_nothing_found(outputtype)
 
     def find_all_in_files(
-        self,
-        re_expression: Union[str, list],
-        path_to_search: Union[str, list],
-        outputtype: str = "df",
-        binary: bool = True,
-        dfa_size: str = "1G",
-        ignore_case: bool = True,
-        multiline: bool = False,
-        multiline_dotall: bool = False,
-        outputencoding: str = "utf-8",
-        field_match_separator: str = "ÇÇ",
+            self,
+            re_expression: Union[str, list],
+            path_to_search: Union[str, list],
+            outputtype: str = "df",
+            binary: bool = True,
+            dfa_size: str = "1G",
+            ignore_case: bool = True,
+            multiline: bool = False,
+            multiline_dotall: bool = False,
+            outputencoding: str = "utf-8",
+            field_match_separator: str = "ÇÇ",
     ):
 
-        regexstart = PyRipGREP()
+        regexstart = PyRipGREP(executeable=self.executeable)
         search_for = self._to_list(re_expression)
         for suche in search_for:
             regexstart.regexp(option=suche, activated=True, multi_allowed=True)
 
         (
             regexstart
-            # PyRipGREP()
-            # .reset_options()
-            # .regexp(suchennach, multi_allowed=True)
-            .binary(activated=binary)
-            .byte_offset(activated=True)  # before
-            .context_separator(option=" ")
-            .dfa_size_limit(option=dfa_size)
-            .field_match_separator(option=field_match_separator)
-            .ignore_case(activated=ignore_case)
-            .null_data(activated=True)
-            .line_number(activated=True)
-            .no_ignore(activated=True)
-            .multiline(activated=multiline)
-            .multiline_dotall(activated=multiline_dotall)
-            .block_buffered(activated=True)
-            .crlf(activated=True)
-            .no_config(activated=True)
-            .only_matching(activated=True)
-            .trim(activated=True)
-            .vimgrep(activated=True)
-            .with_filename(activated=True)
-            .add_target_file_or_folder(path_to_search)
+                .binary(activated=binary)
+                .byte_offset(activated=True)  # before
+                .context_separator(option=" ")
+                .dfa_size_limit(option=dfa_size)
+                .field_match_separator(option=field_match_separator)
+                .ignore_case(activated=ignore_case)
+                .null_data(activated=True)
+                .line_number(activated=True)
+                .no_ignore(activated=True)
+                .multiline(activated=multiline)
+                .multiline_dotall(activated=multiline_dotall)
+                .block_buffered(activated=True)
+                .crlf(activated=True)
+                .no_config(activated=True)
+                .only_matching(activated=True)
+                .trim(activated=True)
+                .vimgrep(activated=True)
+                .with_filename(activated=True)
+                .add_target_file_or_folder(path_to_search)
         )
 
         path_to_search = self._escape_filenames_lst(path_to_search)
@@ -4778,159 +4778,3 @@ class RePatterns:
         except Exception as Notfound:
             return self._return_if_nothing_found(outputtype)
 
-
-if __name__ == "__main__":
-
-    alltests = True
-    if alltests:
-        outputtype = "np"
-
-        suchennach = ["weniger", "mehr"]
-
-        filetosearch = [
-            r"F:\woerterbuecher\wtxt\xaa.txt",
-            r"F:\woerterbuecher\wtxt\xab.txt",
-        ]
-        np_or_df = "np"
-        binary = True
-        dfa_size = "30G"
-        ignore_case = True
-
-        df = RePatterns().find_all_in_files(
-            re_expression=suchennach,
-            path_to_search=filetosearch,
-            outputtype=outputtype,
-            binary=binary,
-            dfa_size=dfa_size,
-            ignore_case=ignore_case,
-        )
-        print(f"{df=}")
-
-        suchennach = ["sein"]
-
-        df2 = RePatterns().find_all_in_files(
-            re_expression=suchennach,
-            path_to_search=filetosearch,
-            outputtype=outputtype,
-            binary=binary,
-            dfa_size=dfa_size,
-            ignore_case=ignore_case,
-        )
-        print(f"{df2=}")
-
-        df3 = RePatterns().find_all_in_files(
-            re_expression=[r"Buch"],
-            path_to_search=filetosearch,
-            outputtype=outputtype,
-            binary=False,
-            dfa_size=dfa_size,
-            ignore_case=ignore_case,
-        )
-        print(f"{df3=}")
-        # variable = [
-        #     "C:\debugtools\dmpfiles\proddump.dmp",
-        #     "C:\debugtools\dmpfiles\procsave2.dmp",
-        # ]
-        dateistrings = [
-            "Das ist ein neues\nHaus Maus Buch",
-            "Was kostet das neue Buch?\nBuch Haus Maus",
-        ]
-        df4 = RePatterns().find_all_in_var_json(
-            re_expression=[r"Buch", "Haus"],
-            variable=dateistrings[0],
-            outputtype=outputtype,
-            binary=True,
-            ignore_case=True,
-        )
-        print(f"{df4=}")
-
-        df5 = RePatterns().find_all_in_var(
-            re_expression=["mein", r"Buch"],
-            variable="Das ist mein Buch. Wo hast du das Buch gekauft?",
-            outputtype=outputtype,
-            binary=False,
-            dfa_size=dfa_size,
-            ignore_case=ignore_case,
-        )
-        print(f"{df5=}")
-
-        df6 = RePatterns().sub_in_files(
-            re_expression=[r"Buch", "Haus"],
-            repl="Auto",
-            path_to_search=filetosearch,
-            outputtype=outputtype,
-            binary=False,
-            dfa_size=dfa_size,
-            ignore_case=ignore_case,
-        )
-        print(f"{df6=}")
-
-        df7 = RePatterns().find_all_in_files_json(
-            re_expression=[r"Buch", "Haus"],
-            search_in=filetosearch,
-            outputtype=outputtype,
-            binary=True,
-            ignore_case=True,
-        )
-        print(f"{df7=}")
-
-        df8 = RePatterns().find_all_in_files_json(
-            re_expression=[r"Buch", "Haus"],
-            search_in=r"F:\nur_df",
-            outputtype=outputtype,
-            binary=True,
-            ignore_case=True,
-        )
-        print(f"{df8=}")
-
-        text = r"""Guy Reffitt, der am 6. Januar am Sturm aufs US-Kapitol teilnahm, muss für sieben Jahre ins Gefängnis. Der stern hat seine Familie anderthalb Jahre lang begleitet – bis zum Urteil gestern in Washington. Über einen Tag vor Gericht, der Amerikas ganze Verlorenheit offenbart.
-    Am Ende ist es eine 18 Jahre junge Frau aus Texas, gerade mit der High School fertig, die den Satz des Tages sagt: "Wenn mein Vater so lange ins Gefängnis muss", sagt sie, "dann verdient Trump lebenslang."
-    
-    Es ist Peyton Reffitt, die Tochter eines Mannes, der am 6. Januar 2021 am Sturm aufs Kapitol teilnahm. Der stern hat die ganze Familie, die nicht mehr ganz ist, seitdem begleitet. Gestern wurde Peytons Vater, Guy Reffitt, in Washington zu über sieben Jahren Haft verurteilt. Bei niemandem sonst, der am 6. Januar dabei war, fiel das Urteil bisher so hoch aus."""
-
-        df9 = RePatterns().find_all_in_files(
-            re_expression=r"\d+\s+\w{5}",
-            path_to_search=r"F:\nur_df\wiki0001.txt",
-            outputtype=outputtype,
-        )
-        print(f"{df9=}")
-        df10 = RePatterns().find_all_in_files(
-            re_expression=r"\d+\s+\w{5}",
-            path_to_search=r"F:\nur_df",
-            outputtype=outputtype,
-        )
-        print(f"{df10=}")
-        df11 = RePatterns().sub_in_files(
-            re_expression=r"\d+\s+(\w{5})",
-            repl="$1",
-            path_to_search=r"F:\nur_df",
-            outputtype=outputtype,
-        )
-        print(f"{df11=}")
-        df12 = RePatterns().find_all_in_var(
-            re_expression=r"\d+\.?\s+\w{5}", variable=text, outputtype=outputtype
-        )
-        print(f"{df12=}")
-        df13 = RePatterns().sub_all_in_var(
-            re_expression=r"\d+\.?\s+(\w{5})",
-            repl="dudu $1",
-            variable=text,
-            outputtype=outputtype,
-        )
-        print(f"{df13=}")
-        df14 = RePatterns().find_all_in_var_json(
-            re_expression=r"\d+\.?\s+(\w{5})", variable=text, outputtype=outputtype
-        )
-        print(f"{df14=}")
-
-        suchennach = ["sein"]
-
-    dfxx = RePatterns().find_all_in_files(
-        re_expression=r"\w\w[ener]\b",
-        path_to_search=r"F:\woerterbuecher\wtxt\xaa.txt",
-        outputtype="df",
-        binary=True,
-        dfa_size="30G",
-        ignore_case=True,
-    )
-    print(f"{dfxx=}")
