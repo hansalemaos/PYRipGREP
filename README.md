@@ -14,14 +14,13 @@ You'll find the files xaa.txt / xab.txt here: https://github.com/hansalemaos/PYR
 Make sure to have rg.exe in your path or pass the path when you create the instance: 
 
 ```python
+from PyRipGrep import RePatterns
 RePatterns(executeable=r"c:\path\rg.exe")
 ```
 
 ```python
     outputtype = "np"
-
     suchennach = ["weniger", "mehr"]
-
     filetosearch = [
         r"F:\woerterbuecher\wtxt\xaa.txt", # download here: https://github.com/hansalemaos/PYRipGREP/blob/main/textfilesfortests/xaa.txt
         r"F:\woerterbuecher\wtxt\xab.txt", #download here: https://github.com/hansalemaos/PYRipGREP/blob/main/textfilesfortests/xab.txt
@@ -30,7 +29,6 @@ RePatterns(executeable=r"c:\path\rg.exe")
     binary = True
     dfa_size = "1G"  # Yes, I have a lot of RAM hahaha
     ignore_case = True
-
     df = RePatterns(executeable=r"rg.exe").find_all_in_files(
         re_expression=suchennach,
         path_to_search=filetosearch,
@@ -41,8 +39,10 @@ RePatterns(executeable=r"c:\path\rg.exe")
     )
     print(f"{df=}")
 
+    
+#########################################################    
+    
     suchennach = ["sein"]
-
     df2 = RePatterns().find_all_in_files(
         re_expression=suchennach,
         path_to_search=filetosearch,
@@ -50,9 +50,11 @@ RePatterns(executeable=r"c:\path\rg.exe")
         binary=binary,
         dfa_size=dfa_size,
         ignore_case=ignore_case,
-    )
+   )
     print(f"{df2=}")
-
+    
+#########################################################    
+   
     df3 = RePatterns().find_all_in_files(
         re_expression=[r"Buch"],
         path_to_search=filetosearch,
@@ -63,6 +65,7 @@ RePatterns(executeable=r"c:\path\rg.exe")
     )
     print(f"{df3=}")
 
+#########################################################    
     dateistrings = [
         "Das ist ein neues\nHaus Maus Buch",
         "Was kostet das neue Buch?\nBuch Haus Maus",
@@ -75,7 +78,7 @@ RePatterns(executeable=r"c:\path\rg.exe")
         ignore_case=True,
     )
     print(f"{df4=}")
-
+#########################################################    
     df5 = RePatterns().find_all_in_var(
         re_expression=["mein", r"Buch"],
         variable="Das ist mein Buch. Wo hast du das Buch gekauft?",
@@ -85,7 +88,7 @@ RePatterns(executeable=r"c:\path\rg.exe")
         ignore_case=ignore_case,
     )
     print(f"{df5=}")
-
+#########################################################    
     df6 = RePatterns().sub_in_files(
         re_expression=[r"Buch", "Haus"],
         repl="Auto",
@@ -96,7 +99,7 @@ RePatterns(executeable=r"c:\path\rg.exe")
         ignore_case=ignore_case,
     )
     print(f"{df6=}")
-
+#########################################################    
     df7 = RePatterns().find_all_in_files_json(
         re_expression=[r"Buch", "Haus"],
         search_in=filetosearch,
@@ -105,7 +108,7 @@ RePatterns(executeable=r"c:\path\rg.exe")
         ignore_case=True,
     )
     print(f"{df7=}")
-
+#########################################################    
     df8 = RePatterns().find_all_in_files_json(
         re_expression=[r"Buch", "Haus"],
         search_in=r"F:\nur_df",
@@ -114,7 +117,7 @@ RePatterns(executeable=r"c:\path\rg.exe")
         ignore_case=True,
     )
     print(f"{df8=}")
-
+#########################################################    
     text = r"""Guy Reffitt, der am 6. Januar am Sturm aufs US-Kapitol teilnahm, muss für sieben Jahre ins Gefängnis. Der stern hat seine Familie anderthalb Jahre lang begleitet – bis zum Urteil gestern in Washington. Über einen Tag vor Gericht, der Amerikas ganze Verlorenheit offenbart.
     Am Ende ist es eine 18 Jahre junge Frau aus Texas, gerade mit der High School fertig, die den Satz des Tages sagt: "Wenn mein Vater so lange ins Gefängnis muss", sagt sie, "dann verdient Trump lebenslang."
 
@@ -126,12 +129,16 @@ RePatterns(executeable=r"c:\path\rg.exe")
         outputtype=outputtype,
     )
     print(f"{df9=}")
+    #########################################################    
+
     df10 = RePatterns().find_all_in_files(
         re_expression=r"\d+\s+\w{5}",
         path_to_search=r"F:\nur_df",
         outputtype=outputtype,
     )
     print(f"{df10=}")
+    #########################################################    
+
     df11 = RePatterns().sub_in_files(
         re_expression=r"\d+\s+(\w{5})",
         repl="$1",
@@ -139,10 +146,14 @@ RePatterns(executeable=r"c:\path\rg.exe")
         outputtype=outputtype,
     )
     print(f"{df11=}")
+    #########################################################    
+
     df12 = RePatterns().find_all_in_var(
         re_expression=r"\d+\.?\s+\w{5}", variable=text, outputtype=outputtype
     )
     print(f"{df12=}")
+    #########################################################    
+
     df13 = RePatterns().sub_all_in_var(
         re_expression=r"\d+\.?\s+(\w{5})",
         repl="dudu $1",
@@ -150,10 +161,13 @@ RePatterns(executeable=r"c:\path\rg.exe")
         outputtype=outputtype,
     )
     print(f"{df13=}")
+    #########################################################    
+
     df14 = RePatterns().find_all_in_var_json(
         re_expression=r"\d+\.?\s+(\w{5})[.?!]", variable=text, outputtype=outputtype
     )
     print(f"{df14=}")
+    #########################################################    
 
     suchennach = ["Sein"]
 
@@ -274,9 +288,10 @@ dfxx=                            aa_filename  aa_line  ...  aa_byte_offset_o  aa
 [3035305 rows x 5 columns]
 ```
 
-This is how you can use the class PyRipGREP directly (output as string!):
+### This is how you can use the class PyRipGREP directly (output as string!):
 
 ```python
+        from PyRipGrep import PyRipGREP
         dfa_size: str = "1G",
         regexstart = PyRipGREP()
         search_for = _to_list(re_expression)
